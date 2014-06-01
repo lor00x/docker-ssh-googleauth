@@ -37,18 +37,5 @@ RUN chown root:root /root/.profile
 # Generate token for google authenticator
 RUN echo "NOW LOGIN AS root/root AND LAUNCH google-authenticator (Ex: google-authenticator -t -r 3 -R 30 -d -f -W)"
 
-
-# FROM baseimage
-
-# 
-# Configure SSH
-# RUN mkdir /root/.ssh
-# ADD id_rsa_docker.pub /root/.ssh/authorized_keys
-# RUN chown root:root /root/.ssh/authorized_keys
-# ADD supervisor_sshd.conf /etc/supervisor/conf.d/sshd.conf
-# RUN service ssh start
-# ADD root.profile /root/.profile
-# RUN chown root:root /root/.profile
-# 
 # On container run, launch supervisor
 CMD ["/usr/bin/supervisord", "--nodaemon"]
